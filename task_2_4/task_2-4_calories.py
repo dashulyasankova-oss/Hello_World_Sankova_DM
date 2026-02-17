@@ -1,0 +1,7 @@
+weight = int(input("Введите ваш вес (кг):"))
+height = int(input("Введите ваш рост (см):"))
+bmi = weight/((height/100)**2)
+print("\n--- Отчет о состоянии здоровья ---")
+print(f"Рост:\t{float(weight)}")
+print(f"Вес:\t{float(height)}")
+print(f"Индекс массы тела: {bmi:.2f}")
