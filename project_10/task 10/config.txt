@@ -1,0 +1,8 @@
+# Настройки биореактора
+TEMPERATURE=37.5
+PH=7.2
+STIRRING_SPEED=200
+
+# Параметры анализатора
+SAMPLE_VOLUME=50
+DILUTION_FACTOR=10
