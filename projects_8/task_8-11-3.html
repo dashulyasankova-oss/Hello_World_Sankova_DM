@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Базовые селекторы CSS</title>
+
+    <style>
+        /* ========================================
+           ЗАДАНИЕ 2: Базовые селекторы
+
+           Использованы:
+           1. * - универсальный селектор
+           2. селектор по тегу (body, p)
+           3. селектор по классу (.lead)
+           4. селектор по id (#title)
+           5. группировка через запятую (h1, .box, .lead)
+           6. два класса слитно (.box.highlight)
+           7. три класса слитно (.box.highlight.large)
+        ======================================== */
+
+        /* 1. Универсальный селектор * */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 2. Селектор по тегу (body) */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px;
+        }
+
+        /* контейнер для центрирования контента */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        /* 3. Селектор по тегу (p) */
+        p {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        /* 4. Селектор по классу (.lead) */
+        .lead {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2A9D8F;
+            background: #e8f4f2;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #2A9D8F;
+        }
+
+        /* 5. Селектор по id (#title) */
+        #title {
+            color: #2A9D8F;
+            font-size: 28px;
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #2A9D8F;
+        }
+
+        /* 6. Группировка через запятую (общие стили для блоков) */
+        h1, .box, .lead {
+            margin-bottom: 20px;
+        }
+
+        /* общие стили для всех блоков .box */
+        .box {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        /* 7. Два класса слитно (.box.highlight) */
+        .box.highlight {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            font-weight: bold;
+        }
+
+        /* 8. Три класса слитно (.box.highlight.large) */
+        .box.highlight.large {
+            padding: 25px;
+            font-size: 18px;
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            border-left: 4px solid #e65100;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* дополнительный стиль для списка */
+        .note {
+            margin-top: 30px;
+            padding: 15px;
+            background: #e8eaf6;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #1a237e;
+        }
+
+        code {
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="title">🎨 Базовые селекторы CSS</h1>
+
+        <p>Обычный абзац. На него действуют только стили по тегу <code>p</code>.</p>
+
+        <p class="lead">
+            🔥 Этот абзац с классом "lead". К нему применяются стили:
+            <code>p</code> (по тегу) + <code>.lead</code> (по классу).
+        </p>
+
+        <div class="box">
+            📦 Блок с классом "box" — базовый серый фон.
+        </div>
+
+        <div class="box highlight">
+            ⭐ Блок с классами "box" и "highlight" — два класса слитно!
+            <br>Применяются стили <code>.box</code> + <code>.box.highlight</code>.
+        </div>
+
+        <div class="box highlight large">
+            🚀 Блок с классами "box", "highlight" и "large" — ТРИ класса слитно!
+            <br>Применяются все три: <code>.box</code> + <code>.box.highlight</code> + <code>.box.highlight.large</code>.
+        </div>
+
+        <div class="note">
+            <strong>🔍 Открой F12 → Elements → выбери любой блок → посмотри вкладку Styles</strong><br>
+            Ты увидишь, какие селекторы применились к каждому элементу и какие правила сработали.
+        </div>
+    </div>
+</body>
+</html>

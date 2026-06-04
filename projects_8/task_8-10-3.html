@@ -1,0 +1,151 @@
+/* ============================================
+   styles.css — общие стили для всего сайта
+   ============================================ */
+
+/* 1. Стили для body (шрифт, фон, цвет текста) */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f7fa;
+    color: #1a1a2e;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+/* 2. Стили для заголовка h1 */
+h1 {
+    color: #2A9D8F;
+    font-size: 32px;
+    text-align: center;
+    border-bottom: 3px solid #2A9D8F;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+}
+
+/* 3. Стили для абзацев p */
+p {
+    font-size: 16px;
+    background: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin: 15px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* 4. Стили для ссылок a и a:hover */
+a {
+    color: #2A9D8F;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 16px;
+    background: #e8f4f2;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+a:hover {
+    color: white;
+    background: #1e6e63;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* 5. Класс .highlight — для выделения */
+.highlight {
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    font-weight: bold;
+    color: #856404;
+}
+
+/* Дополнительные стили для навигации */
+.nav-links {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    background: #e9ecef;
+    border-radius: 10px;
+}
+
+.nav-links a {
+    margin: 0 10px;
+}
+Файл index.html
+html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>🏠 Главная страница</h1>
+
+    <p>
+        Это первая страница моего сайта. Стили подключены через внешний файл
+        <code>styles.css</code>. Обе страницы (<strong>index.html</strong> и
+        <strong>about.html</strong>) используют один и тот же CSS-файл.
+    </p>
+
+    <p class="highlight">
+        🔥 Этот абзац выделен с помощью класса .highlight. Он имеет жёлтый фон
+        и оранжевую рамку слева — очень удобно для важных сообщений!
+    </p>
+
+    <p>
+        Внешние CSS-файлы — это стандарт современной веб-разработки. Они позволяют:
+    </p>
+    <ul>
+        <li>Переиспользовать стили на многих страницах</li>
+        <li>Быстро менять дизайн всего сайта</li>
+        <li>Упрощать поддержку кода</li>
+    </ul>
+
+    <div class="nav-links">
+        <a href="index.html">🏠 Главная</a>
+        <a href="about.html">ℹ️ О нас</a>
+    </div>
+
+</body>
+</html>
+Файл about.html
+html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О нас</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>ℹ️ О нас</h1>
+
+    <p>
+        Это вторая страница — "О нас". Она использует точно такой же файл
+        <code>styles.css</code>, что и главная страница. Поэтому оформление
+        полностью совпадает!
+    </p>
+
+    <p>
+        Это очень удобно: если захочется поменять цвета или шрифты на всём сайте,
+        достаточно отредактировать один единственный файл — <strong>styles.css</strong>.
+    </p>
+
+    <p class="highlight">
+        📢 Обратите внимание: класс .highlight работает одинаково на всех страницах,
+        потому что он определён в общем CSS-файле.
+    </p>
+
+    <div class="nav-links">
+        <a href="index.html">🏠 Главная</a>
+        <a href="about.html">ℹ️ О нас</a>
+    </div>
+
+</body>
+</html>

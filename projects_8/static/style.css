@@ -1,0 +1,231 @@
+/* ════════════════════════════════════════════════════════════ */
+/* 1. ПЕРЕМЕННЫЕ И СБРОС                                          */
+/* ════════════════════════════════════════════════════════════ */
+
+:root {
+    --bg-primary: #f8f9fa;
+    --bg-card: #ffffff;
+    --accent: #2A9D8F;
+    --accent-dark: #1e6e63;
+    --accent-hover: #238b7e;
+    --danger: #d9534f;
+    --danger-dark: #b73834;
+    --text-primary: #1a1a2e;
+    --text-secondary: #6c757d;
+    --border: #dee2e6;
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* ════════════════════════════════════════════════════════════ */
+/* 2. ШАПКА И ПОДВАЛ                                              */
+/* ════════════════════════════════════════════════════════════ */
+
+header {
+    background: var(--accent);
+    color: white;
+    padding: 24px 32px;
+    box-shadow: var(--shadow);
+}
+
+header h1 {
+    font-size: 24px;
+    margin-bottom: 6px;
+}
+
+header p {
+    opacity: 0.9;
+    font-size: 14px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: var(--text-secondary);
+    font-size: 13px;
+    border-top: 1px solid var(--border);
+    background: var(--bg-card);
+}
+
+/* ════════════════════════════════════════════════════════════ */
+/* 3. ДВУХКОЛОНОЧНАЯ РАСКЛАДКА (GRID)                           */
+/* ════════════════════════════════════════════════════════════ */
+
+.layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 24px;
+    padding: 24px 32px;
+    min-height: calc(100vh - 180px);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* ════════════════════════════════════════════════════════════ */
+/* 4. БОКОВАЯ ПАНЕЛЬ (ASIDE)                                    */
+/* ════════════════════════════════════════════════════════════ */
+
+.controls {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 16px;
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+    box-shadow: var(--shadow);
+}
+
+.controls h2 {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin: 16px 0 8px 0;
+    letter-spacing: 0.8px;
+    font-weight: 600;
+}
+
+.controls h2:first-child {
+    margin-top: 0;
+}
+
+/* КНОПКИ */
+.action-btn {
+    display: block;
+    width: 100%;
+    padding: 10px 14px;
+    margin: 6px 0;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: left;
+    transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+    background: var(--accent-hover);
+    transform: translateX(4px);
+    box-shadow: var(--shadow-hover);
+}
+
+.action-btn.clear {
+    background: var(--danger);
+    margin-top: 24px;
+    text-align: center;
+}
+
+.action-btn.clear:hover {
+    background: var(--danger-dark);
+    transform: translateX(0);
+}
+
+/* ════════════════════════════════════════════════════════════ */
+/* 5. ОСНОВНАЯ ОБЛАСТЬ (MAIN)                                   */
+/* ════════════════════════════════════════════════════════════ */
+
+main {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    box-shadow: var(--shadow);
+    min-height: 500px;
+}
+
+.placeholder {
+    text-align: center;
+    color: var(--text-secondary);
+    font-style: italic;
+    padding: 80px 20px;
+}
+
+/* КАРТОЧКА СО СТАТИСТИКОЙ (число) */
+.stat-card {
+    background: linear-gradient(135deg, #f0f7f6 0%, #e8f4f2 100%);
+    border: 2px solid var(--accent);
+    border-radius: 16px;
+    padding: 30px 40px;
+    text-align: center;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.stat-card .label {
+    font-size: 13px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.stat-card .value {
+    font-size: 56px;
+    font-weight: bold;
+    color: var(--accent-dark);
+    margin-top: 12px;
+    line-height: 1.2;
+}
+
+/* КОНТЕЙНЕР ДЛЯ ГРАФИКА */
+.chart-container {
+    text-align: center;
+}
+
+.chart-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+
+/* СОСТОЯНИЯ ЗАГРУЗКИ И ОШИБКИ */
+.loading {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 60px 20px;
+    font-size: 16px;
+}
+
+.loading::before {
+    content: "⏳";
+    display: inline-block;
+    margin-right: 8px;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.error {
+    background: #fff3f3;
+    border: 2px solid var(--danger);
+    color: #c0392b;
+    padding: 16px 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.error::before {
+    content: "❌ ";
+}

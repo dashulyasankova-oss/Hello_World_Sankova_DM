@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Псевдоклассы и селекторы по атрибутам</title>
+
+    <style>
+        /* ========================================
+           ЗАДАНИЕ 3: Псевдоклассы
+
+           Использованы псевдоклассы:
+           - :first-child
+           - :last-child
+           - :nth-child(even)
+           - :hover
+           - :focus
+           - :required
+           - :nth-child(3n)
+           - :not()
+
+           + селектор по атрибуту [href$=".pdf"]
+        ======================================== */
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px;
+            background: #f5f7fa;
+        }
+
+        h1 {
+            color: #1a1a2e;
+            border-bottom: 3px solid #2A9D8F;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: #2A9D8F;
+            margin-top: 30px;
+            font-size: 22px;
+        }
+
+        /* ===== 1. Стили для списка ===== */
+        .task-list {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .task-list li {
+            padding: 10px;
+            margin: 5px 0;
+            list-style-position: inside;
+        }
+
+        /* 2. :first-child — первый пункт */
+        .task-list li:first-child {
+            background: #e8f5e9;
+            font-weight: bold;
+            border-radius: 8px 8px 0 0;
+            color: #2e7d32;
+        }
+
+        /* 3. :last-child — последний пункт */
+        .task-list li:last-child {
+            background: #fff3e0;
+            border-radius: 0 0 8px 8px;
+            color: #e65100;
+        }
+
+        /* 4. :nth-child(3n) — каждый третий пункт */
+        .task-list li:nth-child(3n) {
+            background: #e3f2fd;
+        }
+
+        /* 5. :not(:first-child) — разделители кроме первого */
+        .task-list li:not(:first-child) {
+            border-top: 1px solid #ddd;
+        }
+
+        /* ===== 2. Стили для таблицы ===== */
+        .grade-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .grade-table th,
+        .grade-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .grade-table th {
+            background: #2A9D8F;
+            color: white;
+        }
+
+        /* 6. :nth-child(even) — чередование строк таблицы */
+        .grade-table tr:nth-child(even) {
+            background: #f0f7f6;
+        }
+
+        /* эффект при наведении на строку таблицы */
+        .grade-table tr:hover {
+            background: #fff3e0;
+        }
+
+        /* ===== 3. Стили для ссылок ===== */
+        .links-section {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        .links-section a {
+            display: inline-block;
+            margin: 5px 10px;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-radius: 20px;
+        }
+
+        /* 7. a:hover — реакция ссылок на наведение */
+        .links-section a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        /* обычная ссылка — синяя */
+        .links-section a {
+            background: #e8eaf6;
+            color: #1a237e;
+        }
+
+        /* 8. селектор по атрибуту [href$=".pdf"] — PDF ссылки */
+        a[href$=".pdf"] {
+            background: #ffebee;
+            color: #c62828;
+            font-weight: bold;
+        }
+
+        a[href$=".pdf"]:hover {
+            background: #c62828;
+            color: white;
+        }
+
+        /* внешние ссылки (начинаются с http) */
+        a[href^="http"] {
+            background: #e0f2f1;
+            color: #00695c;
+        }
+
+        a[href^="http"]:hover {
+            background: #00695c;
+            color: white;
+        }
+
+        /* ===== 4. Стили для формы ===== */
+        .form-section {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        /* 9. input:focus — реакция полей на фокус */
+        input:focus {
+            border-color: #2A9D8F;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(42,157,143,0.2);
+        }
+
+        /* 10. input:required — выделить обязательные поля */
+        input:required {
+            background: #fff8e1;
+        }
+
+        /* подсказка для required полей */
+        input:required:invalid {
+            border-color: #ff9800;
+        }
+
+        button {
+            background: #2A9D8F;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: #1e6e63;
+            transform: scale(1.02);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        /* дополнительный стиль для пояснений */
+        .info {
+            background: #e8eaf6;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 30px;
+            font-size: 14px;
+        }
+
+        .info code {
+            background: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🎯 Псевдоклассы и селекторы по атрибутам</h1>
+
+    <!-- ===== СПИСОК ===== -->
+    <h2>📝 Список задач (с псевдоклассами)</h2>
+    <ul class="task-list">
+        <li>✅ Первый пункт — :first-child (жирный, зелёный фон)</li>
+        <li>📌 Второй пункт</li>
+        <li>⭐ Третий пункт — :nth-child(3n) (голубой фон)</li>
+        <li>📌 Четвёртый пункт</li>
+        <li>⭐ Шестой пункт — :nth-child(3n) (голубой фон)</li>
+        <li>🏁 Последний пункт — :last-child (оранжевый фон)</li>
+    </ul>
+
+    <!-- ===== ТАБЛИЦА ===== -->
+    <h2>📊 Таблица успеваемости (чётные строки)</h2>
+    <table class="grade-table">
+        <thead>
+            <tr><th>Студент</th><th>Оценка</th><th>Статус</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Иванов Иван</td><td>95</td><td>Отлично</td></tr>
+            <tr><td>Петров Пётр</td><td>82</td><td>Хорошо</td></tr>
+            <tr><td>Сидорова Анна</td><td>78</td><td>Хорошо</td></tr>
+            <tr><td>Козлов Дмитрий</td><td>91</td><td>Отлично</td></tr>
+            <tr><td>Морозова Елена</td><td>67</td><td>Удовлетворительно</td></tr>
+        </tbody>
+    </table>
+
+    <!-- ===== ССЫЛКИ ===== -->
+    <h2>🔗 Разные типы ссылок</h2>
+    <div class="links-section">
+        <a href="about.html">📄 Внутренняя ссылка (about.html)</a>
+        <a href="https://stepik.org">🌐 Внешняя ссылка (Stepik)</a>
+        <a href="document.pdf">📑 PDF-документ — красная ссылка!</a>
+        <a href="https://google.com">🌐 Google</a>
+        <a href="manual.pdf">📑 Ещё один PDF</a>
+    </div>
+
+    <!-- ===== ФОРМА ===== -->
+    <h2>📋 Форма обратной связи</h2>
+    <div class="form-section">
+        <div class="form-group">
+            <label>Имя:</label>
+            <input type="text" placeholder="Введите имя">
+        </div>
+        <div class="form-group">
+            <label>Email (обязательно):</label>
+            <input type="email" required placeholder="example@mail.ru">
+        </div>
+        <button>Отправить</button>
+        <small style="display: block; margin-top: 10px; color: #666;">
+            * Поле email обязательное — оно подсвечено жёлтым фоном через :required
+        </small>
+    </div>
+
+    <!-- ===== ПОЯСНЕНИЯ ===== -->
+    <div class="info">
+        <strong>🔍 Что здесь использовано?</strong><br><br>
+        <code>li:first-child</code> — первый пункт списка (зелёный фон)<br>
+        <code>li:last-child</code> — последний пункт (оранжевый фон)<br>
+        <code>li:nth-child(even)</code> — чётные строки таблицы (чередование)<br>
+        <code>li:nth-child(3n)</code> — каждый третий пункт (голубой фон)<br>
+        <code>a:hover</code> — реакция ссылок на наведение (поднимаются вверх)<br>
+        <code>input:focus</code> — подсветка поля при клике (зелёная рамка)<br>
+        <code>input:required</code> — обязательные поля (жёлтый фон)<br>
+        <code>li:not(:first-child)</code> — разделители кроме первого пункта<br>
+        <code>a[href$=".pdf"]</code> — ссылки на PDF (красные)<br>
+        <code>a[href^="http"]</code> — внешние ссылки (зелёные)
+    </div>
+
+</body>
+</html>

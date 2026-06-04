@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карточка товара — CSS практика</title>
+
+    <style>
+        /* ============================================
+           ЗАДАНИЕ 3: Карточка товара
+
+           В этом файле используются:
+           - селекторы по тегу
+           - селекторы по классу
+           - группа селекторов через запятую
+           - два класса на одном элементе
+           - шорткаты padding и border
+           - цвета в HEX
+           - несколько шрифтов через запятую
+           - число без единицы (line-height)
+           - комментарии всех видов
+        ============================================ */
+
+        /* === 1. Правило с одним селектором по тегу === */
+        body {
+            font-family: "Segoe UI", "Roboto", Arial, sans-serif;  /* несколько шрифтов */
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* === 2. Правило с одним селектором по классу (.card) === */
+        .card {
+            background: #ffffff;
+            width: 320px;
+            border-radius: 16px;
+            /* шорткат padding с 4 значениями: верх | право | низ | лево */
+            padding: 20px 24px 24px 24px;
+            /* шорткат box-shadow (тень) */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* эффект при наведении на всю карточку */
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        /* === 3. Правило с несколькими селекторами через запятую === */
+        h1, h2, h3 {
+            margin: 0 0 10px 0;
+            font-weight: 600;
+        }
+
+        /* специфичный стиль для h2 в карточке */
+        .card h2 {
+            color: #1a1a2e;
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        /* === 4. Правило с двумя классами на одном элементе === */
+        .card.product {
+            border: 1px solid #e0e0e0;  /* шорткат border */
+        }
+
+        /* стиль для описания */
+        .description {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;  /* число без единицы */
+            margin-bottom: 16px;
+        }
+
+        /* стиль для цены */
+        .price {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2A9D8F;  /* цвет в названии */
+            margin: 0 0 20px 0;
+        }
+
+        /* === 5. Два класса для кнопки (.btn + .btn-primary) === */
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background: #2A9D8F;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1e6e63;
+            transform: scale(1.02);
+        }
+
+        /* дополнительный класс для индикатора "хит" (звездочка) */
+        .hot-badge {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+
+        /* это однострочный комментарий, который заканчивается здесь */
+    </style>
+</head>
+<body>
+
+    <div class="card product">
+        <!-- Многострочный
+             HTML-комментарий
+             Здесь описывается карточка товара -->
+        <span class="hot-badge">🔥 Хит продаж</span>
+        <h2>Смарт-часы Ultra X</h2>
+        <p class="description">
+            Умные часы с AMOLED-экраном, GPS и пульсометром.
+            Водонепроницаемость 5ATM, время работы до 14 дней.
+        </p>
+        <p class="price">12 990 ₽</p>
+        <button class="btn btn-primary">🛒 Добавить в корзину</button>
+    </div>
+
+    <!--
+        ============================================
+        ДОПОЛНИТЕЛЬНОЕ ЗАДАНИЕ:
+        Открой F12 → Elements → выбери .card
+        В правой панели "Styles" смотри, какие правила применились
+        ============================================
+    -->
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анализ студенческой БД</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>📊 Анализ базы данных student_task</h1>
+        <p>Интерактивный дашборд: статистика и визуализация успеваемости</p>
+    </header>
+
+    <div class="layout">
+
+        <!-- Боковая панель с кнопками -->
+        <aside class="controls">
+            <h2>📈 Статистика (числа)</h2>
+            <button class="action-btn stat-btn" data-action="stat" data-metric="mean">
+                📊 Средний балл
+            </button>
+            <button class="action-btn stat-btn" data-action="stat" data-metric="median">
+                🎯 Медиана
+            </button>
+            <button class="action-btn stat-btn" data-action="stat" data-metric="total">
+                🔢 Количество оценок
+            </button>
+            <button class="action-btn stat-btn" data-action="stat" data-metric="std">
+                📉 Стандартное отклонение
+            </button>
+            <button class="action-btn stat-btn" data-action="stat" data-metric="max">
+                ⬆️ Максимальная оценка
+            </button>
+
+            <h2>📊 Графики</h2>
+            <button class="action-btn chart-btn" data-action="chart" data-kind="histogram">
+                📈 Распределение оценок
+            </button>
+            <button class="action-btn chart-btn" data-action="chart" data-kind="courses">
+                🏫 Средний балл по курсам
+            </button>
+
+            <button class="action-btn clear" id="clear-btn">
+                🗑 Очистить
+            </button>
+        </aside>
+
+        <!-- Область для результатов -->
+        <main id="result-area">
+            <div class="placeholder">
+                ← Нажмите кнопку слева, чтобы увидеть результат
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2026 Студент СПбПУ · Курс «Информатика»</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

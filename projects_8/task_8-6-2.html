@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Эксперимент: CLS (Cumulative Layout Shift)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    hr {
+      margin: 40px 0;
+      border: 2px solid red;
+    }
+    .bad {
+      background-color: #ffe0e0;
+      padding: 10px;
+      border-left: 5px solid red;
+    }
+    .good {
+      background-color: #e0ffe0;
+      padding: 10px;
+      border-left: 5px solid green;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🧪 Эксперимент: что такое CLS (Cumulative Layout Shift)</h1>
+  <p>CLS — это «скачок вёрстки», когда контент двигается из-за того, что картинки грузятся слишком поздно. Ниже — два примера. Откройте F12 → Network → Throttling = Slow 3G и обновите страницу.</p>
+
+  <!-- ========================================== -->
+  <!-- ВЕРСИЯ А: БЕЗ width/height (будет прыгать) -->
+  <!-- ========================================== -->
+
+  <h2>❌ Версия А: Без width/height (плохо — будет прыжок)</h2>
+  <div class="bad">
+    <p><strong>Проблема:</strong> браузер не знает размер картинки, поэтому резервирует для неё 0×0 пикселей. Когда картинка загрузится — текст ниже «прыгает» вниз.</p>
+  </div>
+
+  <!-- 5 абзацев до картинки -->
+  <h3>Текст до картинки:</h3>
+  <p>1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  <p>2. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  <p>3. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+  <p>4. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <p>5. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+
+  <!-- КАРТИНКА БЕЗ width/height — будет прыжок! -->
+  <img src="https://picsum.photos/id/104/800/500"
+       alt="Большая картинка для теста CLS"
+       style="display: block; width: 100%;">
+
+  <!-- 5 абзацев после картинки -->
+  <h3>Текст после картинки:</h3>
+  <p>1. Текст ниже картинки. Если картинка не задала размеры заранее — этот текст «прыгнет» вниз, когда картинка загрузится.</p>
+  <p>2. Пользователь уже читал этот текст, а тут — БАЦ! — страница дёрнулась, и строка потерялась.</p>
+  <p>3. Это очень плохо для пользовательского опыта (UX) и ранжирования в Google.</p>
+  <p>4. Особенно заметно на медленном интернете (3G, мобильные сети).</p>
+  <p>5. Google Core Web Vitals требует CLS меньше 0.1 — это примерно незаметное глазу смещение.</p>
+
+  <!-- БОЛЬШОЙ РАЗДЕЛИТЕЛЬ -->
+  <hr>
+
+  <!-- ========================================== -->
+  <!-- ВЕРСИЯ Б: С width/height (прыжка нет)      -->
+  <!-- ========================================== -->
+
+  <h2>✅ Версия Б: С width/height (хорошо — прыжка нет)</h2>
+  <div class="good">
+    <p><strong>Решение:</strong> браузер знает точные размеры картинки (800×500) и резервирует для неё место сразу. Текст не прыгает, даже если картинка грузится долго.</p>
+  </div>
+
+  <!-- 5 абзацев до картинки -->
+  <h3>Текст до картинки:</h3>
+  <p>1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  <p>2. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  <p>3. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+  <p>4. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <p>5. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+
+  <!-- КАРТИНКА С width/height — прыжка НЕТ! -->
+  <img src="https://picsum.photos/id/104/800/500"
+       alt="Та же самая большая картинка"
+       width="800"
+       height="500"
+       style="display: block; width: 100%; height: auto;">
+
+  <!-- 5 абзацев после картинки -->
+  <h3>Текст после картинки:</h3>
+  <p>1. Видите? Даже на Slow 3G текст не прыгает. Место под картинку зарезервировано заранее.</p>
+  <p>2. Это называется «устранение CLS» — один из ключевых показателей качества сайта.</p>
+  <p>3. Google учитывает это в поисковом ранжировании (Core Web Vitals).</p>
+  <p>4. Всегда указывайте width и height в теге img (реальные размеры файла).</p>
+  <p>5. А для адаптивности потом добавляйте в CSS max-width: 100%; height: auto;</p>
+
+  <hr>
+
+  <h3>📊 Что вы наблюдаете?</h3>
+  <ul>
+    <li><strong>Версия А (без width/height):</strong> текст ПРЫГАЕТ вниз, когда догружается картинка. Это раздражает пользователя.</li>
+    <li><strong>Версия Б (с width/height):</strong> текст стоит на месте, место под картинку забронировано с самого начала.</li>
+  </ul>
+
+  <p><a href="#">🔝 Наверх страницы</a></p>
+
+</body>
+</html>

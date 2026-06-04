@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Одностраничник с id-разделами</title>
+  <meta name="description" content="Демонстрация работы id: якорные ссылки и CSS-стилизация через id-селекторы.">
+
+  <style>
+    /* Общие стили для всей страницы */
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      line-height: 1.5;
+    }
+
+    /* Стили для навигации */
+    nav {
+      background: #333;
+      padding: 15px;
+      margin-bottom: 30px;
+      border-radius: 8px;
+      position: sticky;
+      top: 0;
+    }
+    nav ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 16px;
+      background: #555;
+      border-radius: 4px;
+    }
+    nav a:hover {
+      background: #777;
+    }
+
+    /* ===== СТИЛИ ДЛЯ РАЗДЕЛОВ ПО id ===== */
+    #about {
+      background: #e0eaff;      /* голубоватый фон */
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      border-left: 5px solid #1a73e8;
+    }
+
+    #projects {
+      background: #e8f5e9;      /* зеленоватый фон */
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      border-left: 5px solid #2e7d32;
+    }
+
+    #contacts {
+      background: #fff3e0;      /* оранжеватый фон */
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      border-left: 5px solid #ed6c02;
+    }
+
+    /* Дополнительно: плавная прокрутка */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>✨ Мой одностраничный сайт</h1>
+  <p>Кликните по ссылкам в меню — страница плавно прокрутится к нужному разделу.</p>
+
+  <!-- НАВИГАЦИЯ с якорными ссылками на id -->
+  <nav aria-label="Основное меню">
+    <ul>
+      <li><a href="#about">📖 Обо мне</a></li>
+      <li><a href="#projects">🚀 Проекты</a></li>
+      <li><a href="#contacts">📞 Контакты</a></li>
+    </ul>
+  </nav>
+
+  <!-- РАЗДЕЛ 1: id="about" -->
+  <section id="about">
+    <h2>📖 Обо мне</h2>
+    <p>Меня зовут Иван Иванов, я студент СПбПУ. Учусь на направлении «Информатика и вычислительная техника». Увлекаюсь веб-разработкой, Python и открытым исходным кодом.</p>
+    <p>Цель — стать fullstack-разработчиком и создавать полезные сервисы для людей.</p>
+  </section>
+
+  <!-- РАЗДЕЛ 2: id="projects" -->
+  <section id="projects">
+    <h2>🚀 Мои проекты</h2>
+    <p>За время обучения я успел реализовать несколько учебных проектов:</p>
+    <ul>
+      <li><strong>Сайт-визитка</strong> — первая страница на чистом HTML/CSS</li>
+      <li><strong>Телеграм-бот для погоды</strong> — на Python с OpenWeatherMap API</li>
+      <li><strong>Галерея с lazy loading</strong> — эксперимент с оптимизацией</li>
+    </ul>
+    <p>Все проекты можно посмотреть на моём <a href="#">GitHub</a>.</p>
+  </section>
+
+  <!-- РАЗДЕЛ 3: id="contacts" -->
+  <section id="contacts">
+    <h2>📞 Контакты</h2>
+    <p>Свяжитесь со мной любым удобным способом:</p>
+    <ul>
+      <li>📧 <a href="mailto:ivan.ivanov@spbpu.ru">ivan.ivanov@spbpu.ru</a></li>
+      <li>💬 <a href="https://t.me/ivanov" target="_blank" rel="noopener noreferrer">Telegram: @ivanov</a></li>
+      <li>💻 <a href="https://github.com/ivanov" target="_blank" rel="noopener noreferrer">GitHub: /ivanov</a></li>
+    </ul>
+  </section>
+
+  <hr>
+  <p><a href="#">🔝 Наверх страницы</a></p>
+
+</body>
+</html>

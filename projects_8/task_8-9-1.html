@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Карточки проектов — приоритеты</title>
+  <meta name="description" content="Демонстрация работы class: карточки с разными категориями приоритета.">
+
+  <style>
+    /* Общие стили страницы */
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .cards-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    /* ===== 1. Общий стиль для всех карточек (.card) ===== */
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      width: 280px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border-left: 4px solid #ccc;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .card h3 {
+      margin: 0 0 10px 0;
+      color: #333;
+    }
+
+    .card p {
+      color: #666;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* ===== 2. Приоритет: высокий (красная полоса) ===== */
+    .priority-high {
+      border-left-color: #d32f2f;
+      background: linear-gradient(135deg, #fff 0%, #fff5f5 100%);
+    }
+
+    /* ===== 3. Приоритет: средний (оранжевая полоса) ===== */
+    .priority-medium {
+      border-left-color: #ed6c02;
+      background: linear-gradient(135deg, #fff 0%, #fff8e7 100%);
+    }
+
+    /* ===== 4. Приоритет: низкий (зелёная полоса) ===== */
+    .priority-low {
+      border-left-color: #2e7d32;
+      background: linear-gradient(135deg, #fff 0%, #f0f7f0 100%);
+    }
+
+    /* ===== 5. Особенная карточка (featured) — тень и золотая рамка ===== */
+    .featured {
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      border-right: 2px solid #ffc107;
+      position: relative;
+    }
+
+    .featured::before {
+      content: "⭐";
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: #ffc107;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    /* Стили для заголовков */
+    .legend {
+      text-align: center;
+      margin-bottom: 30px;
+      padding: 15px;
+      background: white;
+      border-radius: 8px;
+    }
+    .legend span {
+      display: inline-block;
+      margin: 0 10px;
+      padding: 5px 12px;
+      border-radius: 20px;
+    }
+    .legend .high { background: #d32f2f; color: white; }
+    .legend .medium { background: #ed6c02; color: white; }
+    .legend .low { background: #2e7d32; color: white; }
+    .legend .featured-badge { background: #ffc107; color: #333; }
+  </style>
+</head>
+<body>
+
+  <h1>📋 Мои проекты — карточки задач</h1>
+
+  <div class="legend">
+    <strong>Легенда:</strong>
+    <span class="high">Высокий приоритет 🔴</span>
+    <span class="medium">Средний приоритет 🟠</span>
+    <span class="low">Низкий приоритет 🟢</span>
+    <span class="featured-badge">⭐ Избранное</span>
+  </div>
+
+  <div class="cards-container">
+
+    <!-- КАРТОЧКА 1: priority-high + featured (оба класса) -->
+    <div class="card priority-high featured">
+      <h3>🚀 Запуск главного сайта</h3>
+      <p>Разработка и публикация основного сайта компании. Включает вёрстку, настройку хостинга и SEO.</p>
+    </div>
+
+    <!-- КАРТОЧКА 2: priority-high -->
+    <div class="card priority-high">
+      <h3>🐛 Исправление критических багов</h3>
+      <p>Ошибки в форме оплаты, которые приводят к потере заказов. Срочное исправление.</p>
+    </div>
+
+    <!-- КАРТОЧКА 3: priority-medium -->
+    <div class="card priority-medium">
+      <h3>📱 Адаптив для мобильных</h3>
+      <p>Настройка мобильной версии сайта, исправление отображения на планшетах и телефонах.</p>
+    </div>
+
+    <!-- КАРТОЧКА 4: priority-medium -->
+    <div class="card priority-medium">
+      <h3>✍️ Написание документации</h3>
+      <p>Составление инструкции для администраторов и пользователей новой системы.</p>
+    </div>
+
+    <!-- КАРТОЧКА 5: priority-low -->
+    <div class="card priority-low">
+      <h3>🎨 Обновление дизайна кнопок</h3>
+      <p>Косметическое улучшение интерфейса — новые иконки и анимации.</p>
+    </div>
+
+    <!-- КАРТОЧКА 6: priority-low -->
+    <div class="card priority-low">
+      <h3>📊 Добавление аналитики</h3>
+      <p>Интеграция с системой сбора статистики (не срочно, можно отложить).</p>
+    </div>
+
+  </div>
+
+  <hr>
+
+  <h3>📚 Что показывает этот пример?</h3>
+  <ul>
+    <li><strong>Общий класс <code>.card</code></strong> — задаёт единый стиль для всех карточек (рамка, тень, отступы).</li>
+    <li><strong>Классы приоритета</strong> — <code>.priority-high</code>, <code>.priority-medium</code>, <code>.priority-low</code> — меняют только цвет левой полосы и фон.</li>
+    <li><strong>Класс <code>.featured</code></strong> — добавляет особенную тень и звёздочку только одной карточке.</li>
+    <li><strong>Комбинация классов</strong> — первая карточка имеет <code>card priority-high featured</code> — и получает ВСЕ три набора стилей!</li>
+  </ul>
+
+  <p><a href="#">🔝 Наверх страницы</a></p>
+
+</body>
+</html>

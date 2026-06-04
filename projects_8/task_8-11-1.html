@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Эксперимент с единицами измерения CSS</title>
+
+    <style>
+        /* ========================================
+           ЭКСПЕРИМЕНТ: разные единицы измерения
+
+           Попробуй:
+           1. Изменить размер окна браузера
+           2. Добавить в body: font-size: 20px;
+        ======================================== */
+
+        /* Базовые стили для body */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+
+        /* Общие стили для всех блоков */
+        .box {
+            border: 2px solid #2A9D8F;
+            background: #f0f7f6;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* px — фиксированный размер (не меняется при масштабировании) */
+        .size-px {
+            width: 200px;
+            background: #e8f5e9;
+            border-color: #4caf50;
+        }
+
+        /* em — относительно font-size родительского элемента */
+        .size-em {
+            width: 15em;
+            background: #e3f2fd;
+            border-color: #2196f3;
+        }
+
+        /* rem — относительно font-size корневого элемента (html) */
+        .size-rem {
+            width: 12rem;
+            background: #fff3e0;
+            border-color: #ff9800;
+        }
+
+        /* % — процент от ширины родительского контейнера */
+        .size-percent {
+            width: 50%;
+            background: #fce4ec;
+            border-color: #e91e63;
+        }
+
+        /* vw — процент от ширины окна браузера (viewport width) */
+        .size-vw {
+            width: 30vw;
+            background: #e0f7fa;
+            border-color: #00bcd4;
+        }
+
+        /* Дополнительная информация */
+        .note {
+            margin-top: 30px;
+            padding: 15px;
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            font-size: 14px;
+        }
+
+        /* Измени размер шрифта в html или body и посмотри на em/rem блоки */
+        /* Раскомментируй строку ниже, чтобы увидеть эффект rem */
+        /*
+        html {
+            font-size: 20px;
+        }
+        */
+    </style>
+</head>
+<body>
+
+    <h1>📏 Эксперимент с единицами измерения в CSS</h1>
+
+    <div class="box size-px">Блок 1: width: 200px (фиксированный)</div>
+    <div class="box size-em">Блок 2: width: 15em (относительно родителя)</div>
+    <div class="box size-rem">Блок 3: width: 12rem (относительно корня html)</div>
+    <div class="box size-percent">Блок 4: width: 50% (от родителя)</div>
+    <div class="box size-vw">Блок 5: width: 30vw (30% ширины окна)</div>
+
+    <div class="note">
+        <strong>🔬 Что ты видишь?</strong><br>
+        • <strong>px</strong> — размер не меняется при изменении окна<br>
+        • <strong>em</strong> и <strong>rem</strong> — зависят от размера шрифта (раскомментируй html { font-size: 20px; })<br>
+        • <strong>%</strong> — зависит от ширины родителя (body)<br>
+        • <strong>vw</strong> — меняется при изменении ширины окна браузера<br><br>
+        <strong>📌 Попробуй:</strong> измени размер окна браузера и понаблюдай за блоками 4 и 5.
+    </div>
+
+</body>
+</html>
